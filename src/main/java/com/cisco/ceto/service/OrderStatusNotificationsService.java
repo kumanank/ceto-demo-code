@@ -11,9 +11,6 @@ public class OrderStatusNotificationService {
     @Autowired
     private SmsService smsService;
 
-    @Autowired
-    private CustomerPortalService customerPortalService;
-
     /**
      * Sends real-time order status updates to customers via email and SMS.
      *
@@ -21,62 +18,66 @@ public class OrderStatusNotificationService {
      * @param status  the new status of the order
      */
     public void sendOrderStatusUpdate(String orderId, String status) {
-        // TODO: Implement logic to send email notification
-        emailService.sendEmailNotification(orderId, status);
+        // TODO: Implement logic to retrieve customer details based on orderId
+        String customerEmail = "customer@example.com"; // Placeholder
+        String customerPhone = "1234567890"; // Placeholder
 
-        // TODO: Implement logic to send SMS notification
-        smsService.sendSmsNotification(orderId, status);
+        sendEmailNotification(customerEmail, orderId, status);
+        sendSmsNotification(customerPhone, orderId, status);
 
-        // TODO: Implement logic to update customer portal
-        customerPortalService.updateOrderStatus(orderId, status);
+        // TODO: Implement logic to update customer portal in real-time
+    }
+
+    /**
+     * Sends an email notification to the customer about the order status update.
+     *
+     * @param email   the customer's email address
+     * @param orderId the ID of the order
+     * @param status  the new status of the order
+     */
+    private void sendEmailNotification(String email, String orderId, String status) {
+        // TODO: Implement email sending logic
+        emailService.sendEmail(email, "Order Status Update", "Your order " + orderId + " is now " + status);
+    }
+
+    /**
+     * Sends an SMS notification to the customer about the order status update.
+     *
+     * @param phone   the customer's phone number
+     * @param orderId the ID of the order
+     * @param status  the new status of the order
+     */
+    private void sendSmsNotification(String phone, String orderId, String status) {
+        // TODO: Implement SMS sending logic
+        smsService.sendSms(phone, "Your order " + orderId + " is now " + status);
     }
 }
 
 @RestController
 @RequestMapping("/api/orders")
-class OrderStatusController {
+public class OrderStatusController {
 
     @Autowired
-    private OrderStatusNotificationService orderStatusNotificationService;
+    private OrderStatusNotificationService notificationService;
 
     /**
      * Endpoint to update order status and trigger notifications.
      *
      * @param orderId the ID of the order
      * @param status  the new status of the order
+     * @return a message indicating the success of the operation
      */
     @PutMapping("/{orderId}/status")
-    public void updateOrderStatus(@PathVariable String orderId, @RequestParam String status) {
-        orderStatusNotificationService.sendOrderStatusUpdate(orderId, status);
+    public String updateOrderStatus(@PathVariable String orderId, @RequestParam String status) {
+        notificationService.sendOrderStatusUpdate(orderId, status);
+        return "Order status updated and notifications sent";
     }
 }
 
 interface EmailService {
-    /**
-     * Sends an email notification to the customer.
-     *
-     * @param orderId the ID of the order
-     * @param status  the new status of the order
-     */
-    void sendEmailNotification(String orderId, String status);
+    void sendEmail(String to, String subject, String body);
 }
 
 interface SmsService {
-    /**
-     * Sends an SMS notification to the customer.
-     *
-     * @param orderId the ID of the order
-     * @param status  the new status of the order
-     */
-    void sendSmsNotification(String orderId, String status);
-}
-
-interface CustomerPortalService {
-    /**
-     * Updates the order status in the customer portal.
-     *
-     * @param orderId the ID of the order
-     * @param status  the new status of the order
-     */
-    void updateOrderStatus(String orderId, String status);
+    void sendSms(String to, String message);
 }
