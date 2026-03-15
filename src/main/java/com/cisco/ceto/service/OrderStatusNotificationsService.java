@@ -11,11 +11,11 @@ public class OrderStatusController {
     private OrderStatusService orderStatusService;
 
     /**
-     * Endpoint to update order status and trigger notifications
+     * Endpoint to update order status and send notifications
      * 
      * @param orderStatusUpdate the order status update information
      */
-    @PostMapping("/updateOrderStatus")
+    @PostMapping("/update-order-status")
     public void updateOrderStatus(@RequestBody OrderStatusUpdate orderStatusUpdate) {
         orderStatusService.updateOrderStatus(orderStatusUpdate);
     }
@@ -25,47 +25,41 @@ public class OrderStatusController {
 class OrderStatusService {
 
     /**
-     * Update the order status and send notifications
+     * Update order status and send notifications via email and SMS
      * 
      * @param orderStatusUpdate the order status update information
      */
     public void updateOrderStatus(OrderStatusUpdate orderStatusUpdate) {
-        // TODO: Update order status in the database
-        
-        // TODO: Send email notification
-        sendEmailNotification(orderStatusUpdate);
-        
-        // TODO: Send SMS notification
-        sendSmsNotification(orderStatusUpdate);
-        
+        // TODO: Implement order status update logic
+        // TODO: Call method to send email notification
+        // TODO: Call method to send SMS notification
         // TODO: Update customer portal in real-time
-        updateCustomerPortal(orderStatusUpdate);
     }
 
     /**
-     * Send email notification to the customer
+     * Send email notification to customer
      * 
      * @param orderStatusUpdate the order status update information
      */
-    private void sendEmailNotification(OrderStatusUpdate orderStatusUpdate) {
-        // TODO: Implement email sending logic
+    public void sendEmailNotification(OrderStatusUpdate orderStatusUpdate) {
+        // TODO: Implement email notification logic
     }
 
     /**
-     * Send SMS notification to the customer
+     * Send SMS notification to customer
      * 
      * @param orderStatusUpdate the order status update information
      */
-    private void sendSmsNotification(OrderStatusUpdate orderStatusUpdate) {
-        // TODO: Implement SMS sending logic
+    public void sendSMSNotification(OrderStatusUpdate orderStatusUpdate) {
+        // TODO: Implement SMS notification logic
     }
 
     /**
-     * Update the customer portal with the new order status
+     * Update customer portal with new order status
      * 
      * @param orderStatusUpdate the order status update information
      */
-    private void updateCustomerPortal(OrderStatusUpdate orderStatusUpdate) {
+    public void updateCustomerPortal(OrderStatusUpdate orderStatusUpdate) {
         // TODO: Implement customer portal update logic
     }
 }
