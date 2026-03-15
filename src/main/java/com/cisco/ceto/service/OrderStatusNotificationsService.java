@@ -1,42 +1,39 @@
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-public class OrderStatusController {
-
-    @Autowired
-    private OrderStatusService orderStatusService;
-
-    /**
-     * Endpoint to receive order status updates and trigger notifications
-     * 
-     * @param orderStatusUpdate the order status update information
-     */
-    @PostMapping("/order-status-update")
-    public void updateOrderStatus(@RequestBody OrderStatusUpdate orderStatusUpdate) {
-        orderStatusService.sendNotifications(orderStatusUpdate);
-    }
-}
+import org.springframework.scheduling.annotation.Async;
 
 @Service
-class OrderStatusService {
+public class OrderStatusNotificationService {
 
     /**
-     * Sends real-time order status updates to customers via email and SMS,
-     * and updates the customer portal.
-     * 
-     * @param orderStatusUpdate the order status update information
+     * Sends an email notification to the customer about the order status.
+     *
+     * @param customerEmail the email address of the customer
+     * @param orderStatus   the current status of the order
      */
-    public void sendNotifications(OrderStatusUpdate orderStatusUpdate) {
-        // TODO: Implement email notification
-        // TODO: Implement SMS notification
-        // TODO: Update customer portal in real-time
+    @Async
+    public void sendEmailNotification(String customerEmail, String orderStatus) {
+        // TODO: Implement email sending logic
     }
-}
 
-class OrderStatusUpdate {
-    // TODO: Define necessary fields for order status update
+    /**
+     * Sends an SMS notification to the customer about the order status.
+     *
+     * @param customerPhone the phone number of the customer
+     * @param orderStatus   the current status of the order
+     */
+    @Async
+    public void sendSMSNotification(String customerPhone, String orderStatus) {
+        // TODO: Implement SMS sending logic
+    }
+
+    /**
+     * Updates the customer portal with the real-time order status.
+     *
+     * @param customerId    the ID of the customer
+     * @param orderStatus   the current status of the order
+     */
+    @Async
+    public void updateCustomerPortal(String customerId, String orderStatus) {
+        // TODO: Implement logic to update customer portal
+    }
 }
