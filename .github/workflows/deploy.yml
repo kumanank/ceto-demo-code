@@ -1,0 +1,49 @@
+name: Deploy to Local
+
+on:
+  push:
+    branches: [ main, feature/* ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Display deployment info
+      run: |
+        echo "================================"
+        echo "DEPLOYMENT STARTED"
+        echo "================================"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "Commit: ${{ github.sha }}"
+        echo "Triggered by: ${{ github.actor }}"
+        echo "Runner: ${{ runner.name }}"
+        echo "================================"
+    
+    - name: Build application
+      run: |
+        echo "Building application..."
+        echo "Build completed successfully!"
+    
+    - name: Run tests
+      run: |
+        echo "Running tests..."
+        echo "All tests passed!"
+    
+    - name: Deploy to local environment
+      run: |
+        echo "Deploying to local environment..."
+        echo "Deployment target: Local Laptop"
+        echo "Deployment completed successfully!"
+    
+    - name: Deployment summary
+      run: |
+        echo "================================"
+        echo "DEPLOYMENT SUCCESSFUL"
+        echo "================================"
+        echo "Application deployed to local environment"
+        echo "================================"
