@@ -8,15 +8,16 @@ on:
 jobs:
   build-and-deploy:
     runs-on: self-hosted
-    env:
-      GIT_SSL_NO_VERIFY: "true"
-      GIT_CURL_VERBOSE: "1"
     
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+    - name: Download code
+      shell: powershell
+      run: |
+        [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
+        $url = "https://github.com/kumanank/ceto-demo-code/archive/refs/heads/main.zip"
+        Invoke-WebRequest -Uri $url -OutFile code.zip -UseBasicParsing
+        Expand-Archive -Path code.zip -DestinationPath . -Force
+        Write-Host "Code downloaded successfully!"
     
     - name: Display deployment info
       shell: powershell
