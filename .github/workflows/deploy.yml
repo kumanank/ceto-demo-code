@@ -14,13 +14,13 @@ jobs:
     steps:
     - name: Disable SSL verification
       run: git config --global http.sslVerify false
-      shell: pwsh
+      shell: powershell
     
     - name: Checkout code
       uses: actions/checkout@v4
     
     - name: Display deployment info
-      shell: pwsh
+      shell: powershell
       run: |
         Write-Host "================================"
         Write-Host "DEPLOYMENT STARTED"
@@ -31,19 +31,19 @@ jobs:
         Write-Host "================================"
     
     - name: Build application
-      shell: pwsh
+      shell: powershell
       run: |
         Write-Host "Building application..."
         Write-Host "Build completed successfully!"
     
     - name: Deploy to local environment
-      shell: pwsh
+      shell: powershell
       run: |
         Write-Host "Deploying to local environment..."
         Write-Host "Deployment completed successfully!"
     
     - name: Deployment summary
-      shell: pwsh
+      shell: powershell
       run: |
         Write-Host "================================"
         Write-Host "DEPLOYMENT SUCCESSFUL"
