@@ -9,15 +9,14 @@ jobs:
   build-and-deploy:
     runs-on: self-hosted
     env:
-      GIT_SSL_NO_VERIFY: true
+      GIT_SSL_NO_VERIFY: "true"
+      GIT_CURL_VERBOSE: "1"
     
     steps:
-    - name: Disable SSL verification
-      run: git config --global http.sslVerify false
-      shell: powershell
-    
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
     - name: Display deployment info
       shell: powershell
