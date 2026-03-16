@@ -10,14 +10,15 @@ jobs:
     runs-on: self-hosted
     
     steps:
-    - name: Download code
+    - name: Display deployment info
       shell: powershell
       run: |
-        [System.Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}
-        $url = "https://github.com/kumanank/ceto-demo-code/archive/refs/heads/main.zip"
-        Invoke-WebRequest -Uri $url -OutFile code.zip -UseBasicParsing
-        Expand-Archive -Path code.zip -DestinationPath . -Force
-        Write-Host "Code downloaded successfully!"
+        Write-Host "================================"
+        Write-Host "DEPLOYMENT STARTED"
+        Write-Host "================================"
+        Write-Host "Runner: Local Laptop"
+        Write-Host "Time: $(Get-Date)"
+        Write-Host "================================"
     
     - name: Display deployment info
       shell: powershell
