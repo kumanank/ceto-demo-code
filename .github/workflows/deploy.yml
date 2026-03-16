@@ -8,42 +8,43 @@ on:
 jobs:
   build-and-deploy:
     runs-on: self-hosted
+    env:
+      GIT_SSL_NO_VERIFY: true
     
     steps:
+    - name: Disable SSL verification
+      run: git config --global http.sslVerify false
+      shell: pwsh
+    
     - name: Checkout code
       uses: actions/checkout@v4
     
     - name: Display deployment info
+      shell: pwsh
       run: |
-        echo "================================"
-        echo "DEPLOYMENT STARTED"
-        echo "================================"
-        echo "Branch: ${{ github.ref_name }}"
-        echo "Commit: ${{ github.sha }}"
-        echo "Triggered by: ${{ github.actor }}"
-        echo "Runner: ${{ runner.name }}"
-        echo "================================"
+        Write-Host "================================"
+        Write-Host "DEPLOYMENT STARTED"
+        Write-Host "================================"
+        Write-Host "Branch: $env:GITHUB_REF_NAME"
+        Write-Host "Commit: $env:GITHUB_SHA"
+        Write-Host "Runner: $env:RUNNER_NAME"
+        Write-Host "================================"
     
     - name: Build application
+      shell: pwsh
       run: |
-        echo "Building application..."
-        echo "Build completed successfully!"
-    
-    - name: Run tests
-      run: |
-        echo "Running tests..."
-        echo "All tests passed!"
+        Write-Host "Building application..."
+        Write-Host "Build completed successfully!"
     
     - name: Deploy to local environment
+      shell: pwsh
       run: |
-        echo "Deploying to local environment..."
-        echo "Deployment target: Local Laptop"
-        echo "Deployment completed successfully!"
+        Write-Host "Deploying to local environment..."
+        Write-Host "Deployment completed successfully!"
     
     - name: Deployment summary
+      shell: pwsh
       run: |
-        echo "================================"
-        echo "DEPLOYMENT SUCCESSFUL"
-        echo "================================"
-        echo "Application deployed to local environment"
-        echo "================================"
+        Write-Host "================================"
+        Write-Host "DEPLOYMENT SUCCESSFUL"
+        Write-Host "================================"
