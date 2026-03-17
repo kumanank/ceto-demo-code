@@ -1,5 +1,4 @@
 import org.springframework.stereotype.Component;
-import java.math.BigDecimal;
 
 @Component
 public class DiscountCalculator {
@@ -12,10 +11,11 @@ public class DiscountCalculator {
      * @param discountValue  the value of the discount
      * @param currency       the currency of the quote
      * @return the after-discount amount
+     * @throws IllegalArgumentException if the after-discount amount is negative
      */
-    public BigDecimal calculateDiscount(BigDecimal originalAmount, String discountType, BigDecimal discountValue, String currency) {
+    public double calculateDiscount(double originalAmount, String discountType, double discountValue, String currency) {
         // TODO: Implement discount calculation logic
-        return null;
+        return 0.0;
     }
 
     /**
@@ -23,12 +23,12 @@ public class DiscountCalculator {
      *
      * @param amount     the amount to convert
      * @param fromCurrency the currency to convert from
-     * @param toCurrency   the currency to convert to
+     * @param toCurrency  the currency to convert to
      * @return the converted amount
      */
-    public BigDecimal convertCurrency(BigDecimal amount, String fromCurrency, String toCurrency) {
+    public double convertCurrency(double amount, String fromCurrency, String toCurrency) {
         // TODO: Implement currency conversion logic
-        return null;
+        return 0.0;
     }
 
     /**
@@ -37,7 +37,7 @@ public class DiscountCalculator {
      * @param amount the amount to validate
      * @throws IllegalArgumentException if the amount is negative
      */
-    public void validateAmount(BigDecimal amount) {
+    public void validateAmount(double amount) {
         // TODO: Implement validation logic
     }
 }
