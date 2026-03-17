@@ -1,8 +1,8 @@
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
-@Component
-public class DiscountCalculator {
+@Service
+public class DiscountCalculationService {
 
     /**
      * Calculates the after-discount amount based on the given discount type.
@@ -13,22 +13,22 @@ public class DiscountCalculator {
      * @param currency       the currency of the quote
      * @return the after-discount amount
      */
-    public BigDecimal calculateDiscount(BigDecimal originalAmount, String discountType, BigDecimal discountValue, String currency) {
+    public BigDecimal calculateDiscountedAmount(BigDecimal originalAmount, String discountType, BigDecimal discountValue, String currency) {
         // TODO: Implement discount calculation logic
-        return originalAmount;
+        return null;
     }
 
     /**
      * Converts the amount from one currency to another.
      *
      * @param amount     the amount to convert
-     * @param fromCurrency the original currency
-     * @param toCurrency  the target currency
+     * @param fromCurrency the currency to convert from
+     * @param toCurrency  the currency to convert to
      * @return the converted amount
      */
     public BigDecimal convertCurrency(BigDecimal amount, String fromCurrency, String toCurrency) {
         // TODO: Implement currency conversion logic
-        return amount;
+        return null;
     }
 
     /**
