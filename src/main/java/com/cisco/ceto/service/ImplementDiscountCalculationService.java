@@ -1,67 +1,34 @@
-import org.springframework.stereotype.Service;
-import java.math.BigDecimal;
+import org.springframework.stereotype.Component;
 
-@Service
-public class DiscountCalculationService {
+@Component
+public class DiscountCalculator {
 
     /**
-     * Calculates the after-discount amount based on the given quote line item.
+     * Calculates the after-discount amount based on the given discount type.
      *
-     * @param quoteLineItem the quote line item to calculate the discount for
+     * @param originalAmount the original amount before discount
+     * @param discountType   the type of discount (percentage, fixed amount, tiered pricing)
+     * @param discountValue the value of the discount
+     * @param currency      the currency of the quote
      * @return the after-discount amount
+     * @throws IllegalArgumentException if the after-discount amount is negative
      */
-    public BigDecimal calculateAfterDiscountAmount(QuoteLineItem quoteLineItem) {
+    public double calculateDiscountedAmount(double originalAmount, String discountType, double discountValue, String currency) {
         // TODO: Implement discount calculation logic
-        return null;
+        return 0.0;
     }
 
     /**
-     * Applies a percentage discount to the given amount.
+     * Converts the amount from one currency to another.
      *
-     * @param amount the original amount
-     * @param discountPercentage the discount percentage
-     * @return the amount after applying the percentage discount
-     */
-    public BigDecimal applyPercentageDiscount(BigDecimal amount, BigDecimal discountPercentage) {
-        // TODO: Implement percentage discount logic
-        return null;
-    }
-
-    /**
-     * Applies a fixed amount discount to the given amount.
-     *
-     * @param amount the original amount
-     * @param fixedDiscount the fixed discount amount
-     * @return the amount after applying the fixed discount
-     */
-    public BigDecimal applyFixedDiscount(BigDecimal amount, BigDecimal fixedDiscount) {
-        // TODO: Implement fixed discount logic
-        return null;
-    }
-
-    /**
-     * Applies tiered pricing discounts to the given amount.
-     *
-     * @param amount the original amount
-     * @param tiers the list of tier pricing rules
-     * @return the amount after applying tiered pricing discounts
-     */
-    public BigDecimal applyTieredDiscount(BigDecimal amount, List<TierPricing> tiers) {
-        // TODO: Implement tiered pricing logic
-        return null;
-    }
-
-    /**
-     * Converts the given amount from one currency to another.
-     *
-     * @param amount the amount to convert
-     * @param fromCurrency the source currency
-     * @param toCurrency the target currency
+     * @param amount     the amount to convert
+     * @param fromCurrency the currency to convert from
+     * @param toCurrency  the currency to convert to
      * @return the converted amount
      */
-    public BigDecimal convertCurrency(BigDecimal amount, String fromCurrency, String toCurrency) {
+    public double convertCurrency(double amount, String fromCurrency, String toCurrency) {
         // TODO: Implement currency conversion logic
-        return null;
+        return 0.0;
     }
 
     /**
@@ -70,15 +37,7 @@ public class DiscountCalculationService {
      * @param amount the amount to validate
      * @throws IllegalArgumentException if the amount is negative
      */
-    public void validateAfterDiscountAmount(BigDecimal amount) {
+    public void validateAmount(double amount) {
         // TODO: Implement validation logic
     }
-}
-
-class QuoteLineItem {
-    // TODO: Define QuoteLineItem properties and methods
-}
-
-class TierPricing {
-    // TODO: Define TierPricing properties and methods
 }
