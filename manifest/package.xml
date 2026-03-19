@@ -8,5 +8,9 @@
         <members>Opportunity.Priority_Order_Eligibility</members>
         <name>ValidationRule</name>
     </types>
+    <types>
+        <members>Admin</members>
+        <name>Profile</name>
+    </types>
     <version>59.0</version>
 </Package>
