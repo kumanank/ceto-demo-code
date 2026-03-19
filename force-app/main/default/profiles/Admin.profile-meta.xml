@@ -5,4 +5,7 @@
         <field>Opportunity.Priority_Order__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <layoutAssignments>
+        <layout>Opportunity-Opportunity %28Sales%29 Layout</layout>
+    </layoutAssignments>
 </Profile>
