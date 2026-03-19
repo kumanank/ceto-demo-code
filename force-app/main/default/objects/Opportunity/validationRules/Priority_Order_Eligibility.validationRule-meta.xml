@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Priority_Order_Eligibility</fullName>
+    <active>true</active>
+    <description>Ensures only customers with Credit Limit greater than $50,000 can mark orders as priority</description>
+    <errorConditionFormula>AND(Priority_Order__c = true, Account.Credit_Limit__c &lt; 50000)</errorConditionFormula>
+    <errorMessage>Priority Orders are only available for customers with Credit Limit above $50,000. Please contact your manager for approval.</errorMessage>
+</ValidationRule>
